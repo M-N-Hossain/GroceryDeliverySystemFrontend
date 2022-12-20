@@ -113,7 +113,6 @@ function saveProduct(event){
     }).then(function (response){
         return response.json()
     }).then(function (bookings){
-        // bookings.forEach(booking => createTable(booking))
         window.location.href = "product.html"
     })
 }

@@ -35,7 +35,7 @@ function createTableForOP(orderProduct){
     cell4.innerHTML = orderProduct.totalPrice
 
     let cell5 = row.insertCell(4)
-    cell5.innerHTML = orderProduct.deliveryID
+    cell5.innerHTML = orderProduct.deliverID
 
     let cell6 = row.insertCell(5)
     let updateButton = document.createElement("button")
@@ -110,7 +110,7 @@ function saveOrderProduct(event){
             quantity: opQuantityInpFld.value,
             totalPrice: opTtlPriceInpFld.value,
             productID: opProIdInpFld.value,
-            deliveryID: opDeliveryIDInpFld.value
+            deliverID: opDeliveryIDInpFld.value
         }),
         headers: {
             "Content-type": "application/json"
@@ -118,7 +118,6 @@ function saveOrderProduct(event){
     }).then(function (response){
         return response.json()
     }).then(function (OP){
-        // bookings.forEach(booking => createTable(booking))
         window.location.href = "orderProduct.html"
     })
 }
@@ -159,7 +158,7 @@ function updateOrderProduct(id){
             quantity: opQuantityInpFld.value,
             totalPrice: opTtlPriceInpFld.value,
             productID: opProIdInpFld.value,
-            deliveryID: opDeliveryIDInpFld.value
+            deliverID: opDeliveryIDInpFld.value
         }),
         headers: {
             "Content-type": "application/json"
