@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Product</title>
+    <link rel="stylesheet" href="../CSS/product.css">
+</head>
+<body>
+<div class="headerDiv">
+    <h1>Online Grocery Shop</h1>
+    <ul>
+        <li><a href="#">Product</a></li>
+        <li><a href="#">Order Product</a></li>
+        <li><a href="#">Delivery</a></li>
+    </ul>
+
+</div>
+
+<div class="tableDiv">
+    <h2>List of Products</h2>
+    <button class="addProductBtn">Add Product</button>
+    <input type="text" class="searchIptFld" placeholder="Search Product">
+    <table class="productTable">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Weight(Grams)</th>
+            <th>Price</th>
+        </tr>
+    </table>
+</div>
+
+
+
+
+<div class="popupProductDiv" >
+    <h3>Insert your product info</h3>
+
+    <form class="productInfoForm" action="" method="POST">
+        <p style="margin-left: 49%">ID:</p>
+        <input type="text" class="idInpFld"/>
+        <p style="margin-left: 47%">Name:</p>
+        <input type="text" class="nameInpFld" required />
+        <p style="margin-left: 43%">weight(grams):</p>
+        <input type="number" class="weightInpFld" required />
+        <p style="margin-left: 47%">Price:</p>
+        <input type="number" class="priceInpFld" required />
+
+        <br>
+        <br>
+        <div class="addProductBtnDiv">
+            <button type="submit" class="saveProductBtn">Save</button>
+            <button type="button" class="updateProductBtn">Update</button>
+            <button type="button" class="cancelProductBtn">Cancel</button>
+        </div>
+
+    </form>
+
+</div>
+
+
+
+
+<script src="../JS/product.js" type="module"></script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+.tableDivForOP{
+    position: absolute;
+    width: 68%;
+    top: 20%;
+    left: 15%;
+    text-align: center;
+    background-color:whitesmoke;
+}
+.tableDivForOP .addOpBtn{
+    position: absolute;
+    left: 87%;
+    top: 8%;
+    height: 30px;
+    cursor: pointer;
+}
+
+.opTable{
+    margin: 11%;
+    margin-top: 3%;
+    border: 2px solid white;
+}
+.opTable th{
+    background-color: #393E46;
+    color: white;
+    height: 35px;
+    width: 177px;
+}
+
+tr{
+    color: black;
+}
+.updateBtn{
+    height: 25px;
+    width: 80px;
+    background-color: darkgray;
+    border: darkgray;
+}
+.deleteBtn{
+    height: 25px;
+    width: 80px;
+    background-color: darkgray;
+    border: darkgray;
+}
+.updateBtn:hover{
+    background-color: #D9D9D9;
+    cursor: pointer;
+}
+.deleteBtn:hover{
+    background-color: #D9D9D9;
+    cursor: pointer;
+}
+
+
+.popupOpDiv{
+    background: darkgray;
+    position: absolute;
+    top: 20%;
+    left: 30%;
+    width: 35%;
+    height: auto;
+    visibility: hidden;
+
+}
+.popupOpDiv h3{
+    margin-left: 35%;
+    margin-bottom: 4%;
+}
+.popupOpDiv form p{
+    margin-bottom: 0px;
+}
+.popupOpDiv form input{
+    margin-top: 0px;
+    margin-left: 35%;
+    padding: 2px;
+    text-align: center;
+}
+.addOpBtnDiv{
+    margin-left: 28%;
+    margin-bottom: 2%;
+}
+.addOpBtnDiv button{
+    width: 20%;
+    height: 30px;
+    cursor: pointer;
+}
+.addOpBtnDiv .updateOpBtn{
+    visibility: hidden;
+    position: relative;
+    left: -14%;
+}
+.addOpBtnDiv .saveOpBtn{
+    position: relative;
+    left: 8%;
+}
+.addOpBtnDiv .cancelOpBtn{
+    right: 8%;
+}

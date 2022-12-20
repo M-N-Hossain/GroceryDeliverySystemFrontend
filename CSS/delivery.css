@@ -1,0 +1,51 @@
+.tableDivForDelivery{
+    position: absolute;
+    width: 68%;
+    top: 130%;
+    left: 15%;
+    text-align: center;
+    background-color:whitesmoke;
+}
+.tableDivForDelivery .addDeliveryBtn{
+    position: absolute;
+    left: 87%;
+    top: 8%;
+    height: 30px;
+    cursor: pointer;
+}
+
+.deliveryTable{
+    margin: 11%;
+    margin-top: 3%;
+    border: 2px solid white;
+}
+.deliveryTable th{
+    background-color: #393E46;
+    color: white;
+    height: 35px;
+    width: 177px;
+}
+
+tr{
+    color: black;
+}
+.updateBtn{
+    height: 25px;
+    width: 80px;
+    background-color: darkgray;
+    border: darkgray;
+}
+.deleteBtn{
+    height: 25px;
+    width: 80px;
+    background-color: darkgray;
+    border: darkgray;
+}
+.updateBtn:hover{
+    background-color: #D9D9D9;
+    cursor: pointer;
+}
+.deleteBtn:hover{
+    background-color: #D9D9D9;
+    cursor: pointer;
+}

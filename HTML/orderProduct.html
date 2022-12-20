@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>OrderProduct</title>
+    <link rel="stylesheet" href="../CSS/product.css">
+    <link rel="stylesheet" href="../CSS/op.css">
+</head>
+<body>
+<div class="headerDiv">
+    <h1>Online Grocery Shop</h1>
+    <ul>
+        <li><a href="#">Product</a></li>
+        <li><a href="#">Order Product</a></li>
+        <li><a href="#">Delivery</a></li>
+    </ul>
+</div>
+
+<div class="tableDivForOP">
+    <h2>List of Order</h2>
+    <button class="addOpBtn">Add Product Order</button>
+    <table class="opTable">
+        <tr>
+            <th>ID</th>
+            <th>Quantity</th>
+            <th>Product ID</th>
+            <th>Total Price</th>
+            <th>Delivery ID</th>
+        </tr>
+    </table>
+</div>
+
+
+<div class="popupOpDiv" >
+    <h3>Insert your product info</h3>
+
+    <form class="opInfoForm" action="" method="POST">
+        <p style="margin-left: 49%">ID:</p>
+        <input type="text" class="opIdInpFld"/>
+        <p style="margin-left: 47%">Quantity:</p>
+        <input type="text" class="opQuantityInpFld" required />
+        <p style="margin-left: 43%">Product ID:</p>
+        <input type="number" class="opProIdInpFld" required />
+        <p style="margin-left: 47%">Total Price:</p>
+        <input type="number" class="opTtlPriceInpFld" required />
+        <p style="margin-left: 47%">Delivery ID:</p>
+        <input type="number" class="opDeliveryIDInpFld" required />
+
+        <br>
+        <br>
+        <div class="addOpBtnDiv">
+            <button type="submit" class="saveOpBtn">Save</button>
+            <button type="button" class="updateOpBtn">Update</button>
+            <button type="button" class="cancelOpBtn">Cancel</button>
+        </div>
+
+    </form>
+
+</div>
+
+
+<script src="../JS/op.js" type="module"></script>
+</body>
+</html>
