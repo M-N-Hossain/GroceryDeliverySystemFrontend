@@ -1,7 +1,7 @@
 .tableDivForDelivery{
     position: absolute;
     width: 68%;
-    top: 130%;
+    top: 20%;
     left: 15%;
     text-align: center;
     background-color:whitesmoke;
@@ -16,7 +16,7 @@
 
 .deliveryTable{
     margin: 11%;
-    margin-top: 3%;
+    margin-top: 4%;
     border: 2px solid white;
 }
 .deliveryTable th{
@@ -48,4 +48,50 @@ tr{
 .deleteBtn:hover{
     background-color: #D9D9D9;
     cursor: pointer;
+}
+
+
+.popupDeliveryDiv{
+    background: darkgray;
+    position: absolute;
+    top: 20%;
+    left: 30%;
+    width: 35%;
+    height: auto;
+    visibility: hidden;
+
+}
+.popupDeliveryDiv h3{
+    margin-left: 35%;
+    margin-bottom: 4%;
+}
+.popupDeliveryDiv form p{
+    margin-bottom: 0px;
+}
+.popupDeliveryDiv form input{
+    margin-top: 0px;
+    margin-left: 35%;
+    padding: 2px;
+    text-align: center;
+}
+.addDeliveryBtnDiv{
+    margin-left: 28%;
+    margin-bottom: 2%;
+}
+.addDeliveryBtnDiv button{
+    width: 20%;
+    height: 30px;
+    cursor: pointer;
+}
+.addDeliveryBtnDiv .updateOpBtn{
+    visibility: hidden;
+    position: relative;
+    left: -14%;
+}
+.addDeliveryBtnDiv .saveOpBtn{
+    position: relative;
+    left: 8%;
+}
+.addDeliveryBtnDiv .cancelOpBtn{
+    right: 8%;
 }

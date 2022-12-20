@@ -37,32 +37,32 @@ function createTableForOP(orderProduct){
     let cell5 = row.insertCell(4)
     cell5.innerHTML = orderProduct.deliveryID
 
-    // let cell5 = row.insertCell(4)
-    // let updateButton = document.createElement("button")
-    // // updateButton.addEventListener("click",disable_save_btn)
-    //
-    // updateButton.innerHTML = "Update"
-    // updateButton.className = "updateBtn"
-    // updateButton.addEventListener("click", function (){
-    //     openPopupProductDivForUpdate(cell1.innerHTML,cell2.innerHTML, cell3.innerHTML, cell4.innerHTML)
-    //     updateProductBtn.addEventListener("click", (product)=> updateProduct(cell1.innerHTML))
-    //     updateProductBtn.addEventListener("click", closePopupProductDiv)
-    //     updateProductBtn.addEventListener("click", () => window.location.href = "product.html")
-    //
-    // })
-    // cell5.appendChild(updateButton)
-    //
-    //
-    // let cell6 = row.insertCell(5)
-    // let deleteButton = document.createElement("button")
-    // deleteButton.innerHTML = "Delete"
-    // deleteButton.className = "deleteBtn"
-    // deleteButton.addEventListener("click", booking => deleteProduct(cell1.innerHTML))
-    // cell6.appendChild(deleteButton)
+    let cell6 = row.insertCell(5)
+    let updateButton = document.createElement("button")
+    // updateButton.addEventListener("click",disable_save_btn)
+
+    updateButton.innerHTML = "Update"
+    updateButton.className = "updateBtn"
+    updateButton.addEventListener("click", function (){
+        openPopupOpDivForUpdate(cell1.innerHTML,cell2.innerHTML, cell3.innerHTML, cell4.innerHTML, cell5.innerHTML)
+        updateOpBtn.addEventListener("click", (product)=> updateOrderProduct(cell1.innerHTML))
+        updateOpBtn.addEventListener("click", closePopupOpDiv)
+        updateOpBtn.addEventListener("click", () => window.location.href = "orderProduct.html")
+
+    })
+    cell6.appendChild(updateButton)
+
+
+    let cell7 = row.insertCell(6)
+    let deleteButton = document.createElement("button")
+    deleteButton.innerHTML = "Delete"
+    deleteButton.className = "deleteBtn"
+    deleteButton.addEventListener("click", booking => deleteOrderProduct(cell1.innerHTML))
+    cell7.appendChild(deleteButton)
 
 }
 
-//***Add new product functionalities***//
+            //***Add new productOrder functionalities***//
 
 const popupOpDiv = document.querySelector(".popupOpDiv")
 const addOpBtn = document.querySelector(".addOpBtn")
@@ -91,6 +91,13 @@ function closePopupOpDiv (){
     popupOpDiv.style.visibility = "hidden"
     saveOpBtn.style.visibility = "hidden"
     updateOpBtn.style.visibility = "hidden"
+
+    opQuantityInpFld.value = ""
+    opProIdInpFld.value = ""
+    opTtlPriceInpFld.value = ""
+    opDeliveryIDInpFld.value = ""
+
+
 }
 
 function saveOrderProduct(event){
@@ -101,8 +108,8 @@ function saveOrderProduct(event){
         method: "POST",
         body: JSON.stringify({
             quantity: opQuantityInpFld.value,
-            productID: opProIdInpFld.value,
             totalPrice: opTtlPriceInpFld.value,
+            productID: opProIdInpFld.value,
             deliveryID: opDeliveryIDInpFld.value
         }),
         headers: {
@@ -125,3 +132,86 @@ addOpBtn.addEventListener("click", function (){
 opInfoForm.addEventListener("submit", saveOrderProduct)
 saveOpBtn.addEventListener("submit", closePopupOpDiv)
 cancelOpBtn.addEventListener("click", closePopupOpDiv)
+
+
+
+            //***Update OrderProduct functionalities***//
+
+function openPopupOpDivForUpdate (id,quantity, proId, totalPrice, deliveryDate){
+    saveOpBtn.style.visibility = "hidden"
+    updateOpBtn.style.visibility = "visible"
+
+    popupOpDiv.style.visibility = "visible"
+    opIdInpFld.value = id
+    opIdInpFld.disabled = true
+    opQuantityInpFld.value = quantity
+    opProIdInpFld.value = proId
+    opTtlPriceInpFld.value = totalPrice
+    opDeliveryIDInpFld.value = deliveryDate
+}
+
+function updateOrderProduct(id){
+    out("before update product fetch")
+    fetch("http://localhost:8080/orderProduct/" + id, {
+        method: "PUT",
+        body: JSON.stringify({
+            id: id,
+            quantity: opQuantityInpFld.value,
+            totalPrice: opTtlPriceInpFld.value,
+            productID: opProIdInpFld.value,
+            deliveryID: opDeliveryIDInpFld.value
+        }),
+        headers: {
+            "Content-type": "application/json"
+        }
+    }).then(function (response){
+        return response.json()
+    }).then(function (data){
+        out(data)
+    })
+}
+
+
+
+            //***Delete OP functionalities***//
+
+function deleteOrderProduct(orderProduct_id){
+
+    out("I am in delete fetching")
+    fetch("http://localhost:8080/orderProduct/" + orderProduct_id , {
+        method: "DELETE",
+        body :"",
+        headers: {
+            "Content-type": "application/json"
+        }
+    }).then(function (response) {
+        window.location.href = "orderProduct.html"
+    })
+}
+
+
+
+            // ****adding product as select option*****///
+// const selectProduct = document.querySelector("#selectProduct")
+//
+// function fetchingAllProducts(){
+//     out("Inside fetch all product function")
+//     return fetch("http://localhost:8080/product").then(response => response.json())
+// }
+// fetchingAllProducts().then(r => getProduct(r))
+//
+// async function addingOptionToSelectProduct(){
+//     let products = await fetchingAllProducts();
+//     out(products)
+//     getProduct(products)
+// }
+//
+//
+// function getProduct(products){
+//     for(let i=0; i < products.length; i++){
+//         const option = document.createElement("option");
+//         // option.setAttribute("class", "selectedMonth")
+//         option.textContent = JSON.stringify(products[i])
+//         selectProduct.appendChild(option)
+//     }
+// }

@@ -88,6 +88,12 @@ function closePopupProductDiv (){
     popupProductDiv.style.visibility = "hidden"
     saveProductBtn.style.visibility = "hidden"
     updateProductBtn.style.visibility = "hidden"
+
+    nameInpFld.value = "";
+    weightInpFld.value = ""
+    priceInpFld.value = ""
+
+
 }
 
 function saveProduct(event){
@@ -177,7 +183,7 @@ function deleteProduct(product_id){
     })
 }
 
-                    //*****Search Function*****//
+                    //*****Search Function for product*****//
 const searchIptFld = document.querySelector(".searchIptFld");
 
 function tableSearch() {

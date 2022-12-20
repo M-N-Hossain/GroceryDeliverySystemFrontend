@@ -1,31 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Delivery</title>
-  <link rel="stylesheet" href="../CSS/product.css">
-  <link rel="stylesheet" href="../CSS/delivery.css">
+    <meta charset="UTF-8">
+    <title>Delivery</title>
+    <link rel="stylesheet" href="../CSS/product.css">
+    <link rel="stylesheet" href="../CSS/delivery.css">
 </head>
 <body>
 <div class="headerDiv">
-  <h1>Online Grocery Shop</h1>
-  <ul>
-    <li><a href="#">Product</a></li>
-    <li><a href="#">Order Product</a></li>
-    <li><a href="#">Delivery</a></li>
-  </ul>
-  <div class="tableDivForDelivery">
+    <h1>Online Grocery Shop</h1>
+    <ul>
+        <li><a href="#">Product</a></li>
+        <li><a href="#">Order Product</a></li>
+        <li><a href="#">Delivery</a></li>
+    </ul>
+</div>
+
+<div class="tableDivForDelivery">
     <h2>List of Deliveries</h2>
-    <button class="addDeliveryBtn">Add Product Order</button>
+    <button class="addDeliveryBtn">Add Delivery Info</button>
+    <input type="text" class="searchIptFld" placeholder="Search Destination">
     <table class="deliveryTable">
-      <tr>
-        <th>ID</th>
-        <th>Destination</th>
-        <th>From WareHouse</th>
-        <th>Date</th>
-      </tr>
+        <tr>
+            <th>ID</th>
+            <th>Destination</th>
+            <th>From WareHouse</th>
+            <th>Date</th>
+        </tr>
     </table>
-  </div>
+</div>
+
+<div class="popupDeliveryDiv">
+    <h3>Insert your product info</h3>
+
+    <form class="deliveryInfoForm" action="" method="POST">
+        <p style="margin-left: 49%">ID:</p>
+        <input type="text" class="deliveryIdInpFld"/>
+        <p style="margin-left: 47%">Destination:</p>
+        <input type="text" class="deliveryDestinationInpFld" required/>
+        <p style="margin-left: 43%">From Warehouse:</p>
+        <input type="text" class="deliveryFrWarehouseInpFld" required/>
+        <p style="margin-left: 47%">Date:</p>
+        <input type="date" class="deliveryDateInpFld" required/>
+        <br>
+        <br>
+        <div class="addDeliveryBtnDiv">
+            <button type="submit" class="saveDeliveryBtn">Save</button>
+            <button type="button" class="updateDeliveryBtn">Update</button>
+            <button type="button" class="cancelDeliveryBtn">Cancel</button>
+        </div>
+
+    </form>
+
 </div>
 
 

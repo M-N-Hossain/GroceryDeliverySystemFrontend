@@ -35,27 +35,171 @@ function createTableForDelivery(delivery){
     cell4.innerHTML = delivery.deliveryDate
 
 
-    // let cell5 = row.insertCell(4)
-    // let updateButton = document.createElement("button")
-    // // updateButton.addEventListener("click",disable_save_btn)
-    //
-    // updateButton.innerHTML = "Update"
-    // updateButton.className = "updateBtn"
-    // updateButton.addEventListener("click", function (){
-    //     openPopupProductDivForUpdate(cell1.innerHTML,cell2.innerHTML, cell3.innerHTML, cell4.innerHTML)
-    //     updateProductBtn.addEventListener("click", (product)=> updateProduct(cell1.innerHTML))
-    //     updateProductBtn.addEventListener("click", closePopupProductDiv)
-    //     updateProductBtn.addEventListener("click", () => window.location.href = "product.html")
-    //
-    // })
-    // cell5.appendChild(updateButton)
-    //
-    //
-    // let cell6 = row.insertCell(5)
-    // let deleteButton = document.createElement("button")
-    // deleteButton.innerHTML = "Delete"
-    // deleteButton.className = "deleteBtn"
-    // deleteButton.addEventListener("click", booking => deleteProduct(cell1.innerHTML))
-    // cell6.appendChild(deleteButton)
+    let cell5 = row.insertCell(4)
+    let updateButton = document.createElement("button")
+    // updateButton.addEventListener("click",disable_save_btn)
+
+    updateButton.innerHTML = "Update"
+    updateButton.className = "updateBtn"
+    updateButton.addEventListener("click", function (){
+        openPopupDeliveryDivForUpdate(cell1.innerHTML,cell2.innerHTML, cell3.innerHTML, cell4.innerHTML)
+        updateDeliveryBtn.addEventListener("click", (product)=> updateDeliveryInfo(cell1.innerHTML))
+        updateDeliveryBtn.addEventListener("click", closePopupDeliveryDiv)
+        updateDeliveryBtn.addEventListener("click", () => window.location.href = "delivery.html")
+
+    })
+    cell5.appendChild(updateButton)
+
+    let cell6 = row.insertCell(5)
+    let deleteButton = document.createElement("button")
+    deleteButton.innerHTML = "Delete"
+    deleteButton.className = "deleteBtn"
+    deleteButton.addEventListener("click", booking => deleteDeliveryInfo(cell1.innerHTML))
+    cell6.appendChild(deleteButton)
 
 }
+
+//***Add new productOrder functionalities***//
+
+const popupDeliveryDiv = document.querySelector(".popupDeliveryDiv")
+const addDeliveryBtn = document.querySelector(".addDeliveryBtn")
+
+//Attribute from popup
+const deliveryIdInpFld = document.querySelector(".deliveryIdInpFld")
+const deliveryDestinationInpFld = document.querySelector(".deliveryDestinationInpFld")
+const deliveryFrWarehouseInpFld = document.querySelector(".deliveryFrWarehouseInpFld")
+const deliveryDateInpFld = document.querySelector(".deliveryDateInpFld")
+
+
+const deliveryInfoForm = document.querySelector(".deliveryInfoForm")
+const saveDeliveryBtn = document.querySelector(".saveDeliveryBtn")
+const updateDeliveryBtn = document.querySelector(".updateDeliveryBtn")
+const cancelDeliveryBtn = document.querySelector(".cancelDeliveryBtn")
+
+
+function openPopupDeliveryDiv (){
+    popupDeliveryDiv.style.visibility = "visible"
+    saveDeliveryBtn.style.visibility = "visible"
+
+
+}
+function closePopupDeliveryDiv (){
+    popupDeliveryDiv.style.visibility = "hidden"
+    saveDeliveryBtn.style.visibility = "hidden"
+    updateDeliveryBtn.style.visibility = "hidden"
+
+    deliveryDestinationInpFld.value = ""
+    deliveryFrWarehouseInpFld.value = ""
+    deliveryFrWarehouseInpFld.value = ""
+
+}
+
+function saveDeliveryInfo(event){
+    event.preventDefault()
+
+    out("before adding delivery info fetch")
+    fetch("http://localhost:8080/delivery", {
+        method: "POST",
+        body: JSON.stringify({
+            destination: deliveryDestinationInpFld.value,
+            fromWarehouse: deliveryFrWarehouseInpFld.value,
+            deliveryDate: deliveryDateInpFld.value
+        }),
+        headers: {
+            "Content-type": "application/json"
+        }
+    }).then(function (response){
+        return response.json()
+    }).then(function (delivery){
+        window.location.href = "delivery.html"
+    })
+}
+
+addDeliveryBtn.addEventListener("click", function (){
+    deliveryIdInpFld.value = "Generating...."
+    deliveryIdInpFld.disabled = true
+    updateDeliveryBtn.style.visibility = "hidden"
+    openPopupDeliveryDiv()
+})
+deliveryInfoForm.addEventListener("submit", saveDeliveryInfo)
+saveDeliveryBtn.addEventListener("submit", closePopupDeliveryDiv)
+cancelDeliveryBtn.addEventListener("click", closePopupDeliveryDiv)
+
+
+            //***Update deliver info functionalities***//
+
+function openPopupDeliveryDivForUpdate (id,destination, fromWarehouse, deliveryDate){
+    saveDeliveryBtn.style.visibility = "hidden"
+    updateDeliveryBtn.style.visibility = "visible"
+
+    popupDeliveryDiv.style.visibility = "visible"
+    deliveryIdInpFld.value = id
+    deliveryIdInpFld.disabled = true
+    deliveryDestinationInpFld.value = destination
+    deliveryFrWarehouseInpFld.value = fromWarehouse
+    deliveryDateInpFld.value = deliveryDate
+}
+
+function updateDeliveryInfo(id){
+    out("before update delivery info fetch")
+    fetch("http://localhost:8080/delivery/" + id, {
+        method: "PUT",
+        body: JSON.stringify({
+            id: id,
+            destination: deliveryDestinationInpFld.value,
+            fromWarehouse: deliveryFrWarehouseInpFld.value,
+            deliveryDate: deliveryDateInpFld.value
+        }),
+        headers: {
+            "Content-type": "application/json"
+        }
+    }).then(function (response){
+        return response.json()
+    }).then(function (data){
+        out(data)
+    })
+}
+
+
+
+            //***Delete delivery info functionalities***//
+
+function deleteDeliveryInfo(id){
+
+    out("I am in delete fetching")
+    fetch("http://localhost:8080/delivery/" + id , {
+        method: "DELETE",
+        body :"",
+        headers: {
+            "Content-type": "application/json"
+        }
+    }).then(function (response) {
+        window.location.href = "delivery.html"
+    })
+}
+
+        //*****Search Function for delivery*****//
+const searchIptFld = document.querySelector(".searchIptFld");
+
+function tableSearch() {
+    let filter, tr, td, txtValue;
+    //Initializing Variables
+    filter = searchIptFld.value.toUpperCase();
+    tr = deliveryTable.getElementsByTagName("tr");
+
+    for (let i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[1];
+        if (td) {
+            txtValue = td.textContent || td.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+            } else {
+                tr[i].style.display = "none";
+            }
+        }
+    }
+
+}
+searchIptFld.addEventListener("keyup", tableSearch)
+
+
