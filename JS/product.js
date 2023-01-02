@@ -1,6 +1,13 @@
 const out = (any) => {console.log(any)}
 out("I can read javascript file")
 
+                    ///***Handling page title***///
+const productTitle = document.querySelector(".productTitle")
+productTitle.style.textDecoration = "underline"
+productTitle.style.textDecorationColor = "Gray"
+
+
+                ///***Showing product in table functionalities***///
 const productTable = document.querySelector(".productTable");
 
 function fetchingAllProducts(){

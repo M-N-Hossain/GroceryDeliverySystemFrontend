@@ -1,6 +1,14 @@
 const out = (any) => {console.log(any)}
 out("I can read javascript file")
 
+                    //***Handling page title***///
+const deliveryTitle = document.querySelector(".deliveryTitle")
+deliveryTitle.style.textDecoration = "underline"
+deliveryTitle.style.textDecorationColor = "Gray"
+
+
+                ///***Showing delivery in table functionalities***///
+
 const deliveryTable = document.querySelector(".deliveryTable");
 
 function fetchingAllDeliveries(){
@@ -59,7 +67,11 @@ function createTableForDelivery(delivery){
 
 }
 
-//***Add new productOrder functionalities***//
+
+
+
+
+                    //***Add new productOrder functionalities***//
 
 const popupDeliveryDiv = document.querySelector(".popupDeliveryDiv")
 const addDeliveryBtn = document.querySelector(".addDeliveryBtn")
@@ -115,10 +127,34 @@ function saveDeliveryInfo(event){
     })
 }
 
+
+function minMonth(){
+    let day
+    let month
+    let year
+    let dateObject = new Date();
+
+    day = dateObject.getDate()
+    if(day < 10){
+        day = "0"+ day
+    }
+    month = dateObject.getMonth() + 1
+    if (month<10){
+        month = "0"+month
+    }
+    year = dateObject.getFullYear()
+
+    return year + "-" + month + "-" + day;
+}
+
+out(minMonth())
+
+
 addDeliveryBtn.addEventListener("click", function (){
     deliveryIdInpFld.value = "Generating...."
     deliveryIdInpFld.disabled = true
     updateDeliveryBtn.style.visibility = "hidden"
+    deliveryDateInpFld.setAttribute("min",  minMonth())
     openPopupDeliveryDiv()
 })
 deliveryInfoForm.addEventListener("submit", saveDeliveryInfo)

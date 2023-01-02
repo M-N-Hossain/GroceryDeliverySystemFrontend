@@ -16,7 +16,7 @@
 
 .deliveryTable{
     margin: 11%;
-    margin-top: 4%;
+    margin-top: 3%;
     border: 2px solid white;
 }
 .deliveryTable th{
@@ -28,6 +28,9 @@
 
 tr{
     color: black;
+}
+td{
+    border-bottom: 1px solid darkgray;
 }
 .updateBtn{
     height: 25px;
@@ -74,6 +77,10 @@ tr{
     padding: 2px;
     text-align: center;
 }
+
+.popupDeliveryDiv form .deliveryDateInpFld{
+    margin-left: 40%;
+}
 .addDeliveryBtnDiv{
     margin-left: 28%;
     margin-bottom: 2%;
@@ -83,15 +90,16 @@ tr{
     height: 30px;
     cursor: pointer;
 }
-.addDeliveryBtnDiv .updateOpBtn{
+.addDeliveryBtnDiv .updateDeliveryBtn{
     visibility: hidden;
     position: relative;
     left: -14%;
 }
-.addDeliveryBtnDiv .saveOpBtn{
+.addDeliveryBtnDiv .saveDeliveryBtn{
     position: relative;
-    left: 8%;
+    left: 9%;
 }
-.addDeliveryBtnDiv .cancelOpBtn{
-    right: 8%;
+.addDeliveryBtnDiv .cancelDeliveryBtn{
+    position: relative;
+    right: 9%;
 }

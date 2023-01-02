@@ -15,7 +15,7 @@
 }
 
 .opTable{
-    margin: 11%;
+    margin: 6%;
     margin-top: 3%;
     border: 2px solid white;
 }
@@ -28,6 +28,9 @@
 
 tr{
     color: black;
+}
+td{
+    border-bottom: 1px solid darkgray;
 }
 .updateBtn{
     height: 25px;
@@ -74,6 +77,14 @@ tr{
     padding: 2px;
     text-align: center;
 }
+
+.popupOpDiv form select{
+    margin-left: 35%;
+    width: 30%;
+    padding: 2px;
+    text-align: center;
+}
+
 .addOpBtnDiv{
     margin-left: 28%;
     margin-bottom: 2%;
@@ -93,5 +104,6 @@ tr{
     left: 8%;
 }
 .addOpBtnDiv .cancelOpBtn{
+    position: relative;
     right: 8%;
 }

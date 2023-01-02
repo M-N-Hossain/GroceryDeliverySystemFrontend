@@ -8,24 +8,27 @@
 </head>
 <body>
 <div class="headerDiv">
-    <h1>Online Grocery Shop</h1>
+    <a style="text-decoration: none; color: black" href="product.html"> <h1>Online Grocery Shop</h1></a>
     <ul>
-        <li><a href="#">Product</a></li>
-        <li><a href="#">Order Product</a></li>
-        <li><a href="#">Delivery</a></li>
+        <li><a  href="../HTML/product.html">Product</a></li>
+        <li><a class="opTitle" href="../HTML/orderProduct.html">Order Product</a></li>
+        <li><a  href="../HTML/delivery.html">Delivery</a></li>
     </ul>
 </div>
 
 <div class="tableDivForOP">
     <h2>List of Order</h2>
     <button class="addOpBtn">Add Product Order</button>
+    <input style="left: 36.5%" type="text" class="searchIptFld" placeholder="Search Destination">
     <table class="opTable">
         <tr>
             <th>ID</th>
+            <th>Product</th>
             <th>Quantity</th>
-            <th>Product ID</th>
+            <th>Total Weight(KG)</th>
             <th>Total Price</th>
-            <th>Delivery ID</th>
+            <th>Van</th>
+            <th style="width: 200px">Delivery Destination</th>
         </tr>
     </table>
 </div>
@@ -35,21 +38,26 @@
     <h3>Insert your product info</h3>
 
     <form class="opInfoForm" action="" method="POST">
-        <p style="margin-left: 49%">ID:</p>
+        <p style="margin-left: 47%">ID:</p>
         <input type="text" class="opIdInpFld"/>
-        <p style="margin-left: 47%">Quantity:</p>
+
+        <p style="margin-left: 45%">Product:</p>
+        <select name="product" class="selectProduct"  required></select>
+
+        <p style="margin-left: 45%">Quantity:</p>
         <input type="text" class="opQuantityInpFld" required />
-        <p style="margin-left: 43%">Product ID:</p>
-        <input type="number" class="opProIdInpFld" required />
 
-<!--        <br>-->
-<!--        <select name="month" class="opProIdInpFld" id="selectProduct" required></select>-->
-<!--        <br>-->
+        <p style="margin-left: 38%">Total Wight (KG):</p>
+        <input type="number" class="opTtlWeightInpFld" required />
 
-        <p style="margin-left: 47%">Total Price:</p>
+        <p style="margin-left: 43%">Total Price:</p>
         <input type="number" class="opTtlPriceInpFld" required />
-        <p style="margin-left: 47%">Delivery ID:</p>
-        <input type="number" class="opDeliveryIDInpFld" required/>
+
+        <p style="margin-left: 39%">Delivery Destination:</p>
+        <select name="delivery" class="selectDelivery"   required></select>
+
+        <p style="margin-left: 47%">Van:</p>
+        <select name="delivery" class="selectVan"   required></select>
 
         <br>
         <br>
