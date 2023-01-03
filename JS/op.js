@@ -64,7 +64,7 @@ function createTableForOP(orderProduct){
     updateButton.innerHTML = "Update"
     updateButton.className = "updateBtn"
     updateButton.addEventListener("click", function (){
-        openPopupOpDivForUpdate(cell1.innerHTML,cell2.innerHTML, cell3.innerHTML, cell4.innerHTML, cell5.innerHTML, cell6.innerHTML)
+        openPopupOpDivForUpdate(cell1.innerHTML,cell2.innerHTML, cell3.innerHTML, cell4.innerHTML, cell5.innerHTML, cell6.innerHTML, cell7.innerHTML)
         updateOpBtn.addEventListener("click", (product)=> updateOrderProduct(cell1.innerHTML))
         updateOpBtn.addEventListener("click", closePopupOpDiv)
         updateOpBtn.addEventListener("click", () => window.location.href = "orderProduct.html")
@@ -165,8 +165,8 @@ function saveOrderProduct(event){
     }).then(function (response){
         return response.json()
     }).then(function (orderProduct){
-        out(orderProduct)
-        // window.location.href = "orderProduct.html"
+        // out(orderProduct)
+        window.location.href = "orderProduct.html"
     })
 }
 
@@ -191,7 +191,7 @@ cancelOpBtn.addEventListener("click", closePopupOpDiv)
 
             //***Update OrderProduct functionalities***//
 
-function openPopupOpDivForUpdate (id, product, quantity, totalWeight, totalPrice, deliveryDestination){
+function openPopupOpDivForUpdate (id, product, quantity, totalWeight, totalPrice, van, deliveryDestination){
     saveOpBtn.style.visibility = "hidden"
     updateOpBtn.style.visibility = "visible"
 
@@ -202,6 +202,8 @@ function openPopupOpDivForUpdate (id, product, quantity, totalWeight, totalPrice
     opQuantityInpFld.value = quantity
     opTtlWeightInpFld.value = totalWeight
     opTtlPriceInpFld.value = totalPrice
+    out(van)
+    selectVan.value = van
     selectDelivery.value = deliveryDestination
 
     opTtlPriceInpFld.disabled = "true"
@@ -228,6 +230,11 @@ function updateOrderProduct(id){
                 deliveryDate: deliveryInfoFromDatabase[selectDelivery.selectedIndex].deliveryDate,
                 fromWarehouse: deliveryInfoFromDatabase[selectDelivery.selectedIndex].fromWarehouse,
                 destination: deliveryInfoFromDatabase[selectDelivery.selectedIndex].destination
+            },
+            vanID: {
+                id: vanFromDatabase[selectVan.selectedIndex].id,
+                vanName: vanFromDatabase[selectVan.selectedIndex].vanName,
+                capacity: vanFromDatabase[selectVan.selectedIndex].capacity
             }
         }),
         headers: {
